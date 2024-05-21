@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System.Collections;
+using System.Net.Http;
 using System.Runtime.Serialization;
 using System.Text.Json;
 using CryptoCurrencies.Models;
@@ -37,12 +38,69 @@ public static class ApiTools
         EnsureDeserialization(response);
         return response!.Data;
     }
+    
+    /// <summary>
+    /// Gets the currency with the specified symbol.
+    /// </summary>
+    /// <param name="symbol">Symbol of the currency (e.g. BTC)</param>
+    /// <returns>Currency object if such currency is found, otherwise null</returns>
+    public static Currency? GetCurrencyBySymbol(string symbol)
+    {
+        var url = $"{_baseUrl}/assets";
+        var json = GetResponse(url);
+        var response = JsonSerializer.Deserialize<ApiResponse<IEnumerable<Currency>>>(json);
+        EnsureDeserialization(response);
+        return response!.Data.FirstOrDefault(c => c.Symbol == symbol);
+    }
+    
+    /// <summary>
+    /// Gets the currency with the specified name.
+    /// </summary>
+    /// <param name="name">Name of the currency (e.g. Bitcoin)</param>
+    /// <returns>Currency object if such currency is found, otherwise null</returns>
+    public static Currency? GetCurrencyByName(string name)
+    {
+        var url = $"{_baseUrl}/assets?search={name}";
+        var json = GetResponse(url);
+        var response = JsonSerializer.Deserialize<ApiResponse<IEnumerable<Currency>>>(json);
+        EnsureDeserialization(response);
+        return response!.Data.FirstOrDefault(c => c.Name.Contains(name, StringComparison.CurrentCultureIgnoreCase));
+    }
 
+    /// <summary>
+    /// Gets the markets for the specified currency.
+    /// </summary>
+    /// <param name="currencyId">ID of the currency</param>
+    /// <returns>A list of markets where the specified curency may be purchased.</returns>
     public static IEnumerable<Market> GetMarkets(string currencyId)
     {
         var url = $"{_baseUrl}/assets/{currencyId}/markets";
         var json = GetResponse(url);
         var response = JsonSerializer.Deserialize<ApiResponse<IEnumerable<Market>>>(json);
+        EnsureDeserialization(response);
+        return response!.Data;
+    }
+    
+    /// <summary>
+    /// Gets the price history for the specified currency.
+    /// </summary>
+    /// <param name="currencyId">ID of the currency</param>
+    /// <param name="interval">Interval between two points on plot</param>
+    /// <returns>A list of prices that the currency had over the last time.</returns>
+    public static IEnumerable<Price> GetPriceHistory(string currencyId, string interval = "d1")
+    {
+        var url = $"{_baseUrl}/assets/{currencyId}/history?interval={interval}";
+        var json = GetResponse(url);
+        var response = JsonSerializer.Deserialize<ApiResponse<IEnumerable<Price>>>(json);
+        EnsureDeserialization(response);
+        return response!.Data;
+    }
+    
+    public static IEnumerable<Candle> GetCandles(string currencyId, string exchangeId, string baseID, string quoteId, string interval = "d1")
+    {
+        var url = $"{_baseUrl}/assets/{currencyId}/candles?interval={interval}&exchangeId={exchangeId}&baseId={baseID}&quoteId={quoteId}";
+        var json = GetResponse(url);
+        var response = JsonSerializer.Deserialize<ApiResponse<IEnumerable<Candle>>>(json);
         EnsureDeserialization(response);
         return response!.Data;
     }

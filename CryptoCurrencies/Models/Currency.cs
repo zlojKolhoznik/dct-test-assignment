@@ -36,4 +36,9 @@ public class Currency
     
     [JsonPropertyName("vwap24Hr")]
     public string Vwap24Hr { get; set; }
+    
+    public double Convert(Currency other, double amount)
+    {
+        return amount * double.Parse(PriceUsd) / double.Parse(other.PriceUsd);
+    }
 }
