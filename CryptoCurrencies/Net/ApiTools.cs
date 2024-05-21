@@ -20,11 +20,8 @@ public static class ApiTools
         var url = $"{_baseUrl}/assets";
         var json = GetResponse(url);
         var response = JsonSerializer.Deserialize<ApiResponse<IEnumerable<Currency>>>(json);
-        if (response is null)
-        {
-            throw new SerializationException("Failed to deserialize response");
-        }
-        return response.Data.Take(10);
+        EnsureDeserialization(response);
+        return response!.Data.Take(10);
     }
     
     /// <summary>
@@ -36,10 +33,28 @@ public static class ApiTools
     {
         var url = $"{_baseUrl}/assets/{id}";
         var json = GetResponse(url);
-        var response = JsonSerializer.Deserialize<ApiResponse<Currency>>(json);
-        return response?.Data;
+        var response = JsonSerializer.Deserialize<ApiResponse<Currency?>>(json);        
+        EnsureDeserialization(response);
+        return response!.Data;
     }
-    
+
+    public static IEnumerable<Market> GetMarkets(string currencyId)
+    {
+        var url = $"{_baseUrl}/assets/{currencyId}/markets";
+        var json = GetResponse(url);
+        var response = JsonSerializer.Deserialize<ApiResponse<IEnumerable<Market>>>(json);
+        EnsureDeserialization(response);
+        return response!.Data;
+    }
+
+    private static void EnsureDeserialization<T>(ApiResponse<T>? response)
+    {
+        if (response is null)
+        {
+            throw new SerializationException("Failed to deserialize response");
+        }
+    }
+
     /// <summary>
     /// Sends a GET request to the specified URL and returns the response as a string.
     /// </summary>
