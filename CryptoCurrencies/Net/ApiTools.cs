@@ -28,6 +28,19 @@ public static class ApiTools
     }
     
     /// <summary>
+    /// Gets the currency with the specified ID.
+    /// </summary>
+    /// <param name="id">ID of the currency on the API</param>
+    /// <returns>Currency object if such currency is found, otherwise null</returns>
+    public static Currency? GetCurrency(string id)
+    {
+        var url = $"{_baseUrl}/assets/{id}";
+        var json = GetResponse(url);
+        var response = JsonSerializer.Deserialize<ApiResponse<Currency>>(json);
+        return response?.Data;
+    }
+    
+    /// <summary>
     /// Sends a GET request to the specified URL and returns the response as a string.
     /// </summary>
     /// <param name="url">URL of GET request</param>
