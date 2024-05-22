@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:CryptoCurrencies"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+         <ResourceDictionary>
+             <ResourceDictionary.MergedDictionaries>
+                 <ResourceDictionary Source="Themes/MenuButtonTheme.xaml"></ResourceDictionary>
+                 <ResourceDictionary Source="Themes/SearchBoxTheme.xaml"></ResourceDictionary>
+                 <ResourceDictionary Source="Themes/SearchButtonStyle.xaml"></ResourceDictionary>
+             </ResourceDictionary.MergedDictionaries>
+         </ResourceDictionary>
     </Application.Resources>
 </Application>

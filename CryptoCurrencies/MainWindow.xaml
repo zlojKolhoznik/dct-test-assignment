@@ -3,10 +3,73 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel="clr-namespace:CryptoCurrencies.MVVM.ViewModel"
         xmlns:local="clr-namespace:CryptoCurrencies"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+        Height="600"
+        Width="920"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent">
+    
+    <Window.DataContext>
+        <viewModel:MainViewModel></viewModel:MainViewModel>
+    </Window.DataContext>
+    
+    <Border Background="#452667"
+            CornerRadius="20">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            <TextBlock Text="CryptoC"
+                       Foreground="White"
+                       VerticalAlignment="Center"
+                       Margin="50,0,0,0"
+                       FontSize="22"></TextBlock>
+            
+            <StackPanel Grid.Row="1">
+                <RadioButton Content="Home"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="16"
+                             Style="{StaticResource MenuButtonStyle}"></RadioButton>
+                <RadioButton Content="Currency"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="16"
+                             Style="{StaticResource MenuButtonStyle}"></RadioButton>
+                <RadioButton Content="Convert"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="16"
+                             Style="{StaticResource MenuButtonStyle}"></RadioButton>
+                <RadioButton Content="Exit"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="16"
+                             Command="{Binding ExitCommand}"
+                             Style="{StaticResource MenuButtonStyle}"></RadioButton>
+            </StackPanel>
+            <StackPanel Grid.Column="1"
+                        Orientation="Horizontal">
+                <TextBox VerticalContentAlignment="Center"
+                         HorizontalAlignment="Left"
+                         Margin="30"
+                         Style="{StaticResource SearchBoxTheme}"></TextBox>
+                <Button Height="30"
+                        Content="Search"
+                        Padding="5"
+                        Style="{StaticResource SearchButtonStyle}"></Button>
+            </StackPanel>
+        </Grid>
+    </Border>
 </Window>
