@@ -143,5 +143,20 @@
                            Foreground="White"/>
             </StackPanel>
         </StackPanel>
+        <Grid Grid.Row="2"
+                    Grid.ColumnSpan="2"
+                    Margin="10,0,0,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock HorizontalAlignment="Center"
+                       FontSize="18"
+                       Foreground="White"
+                       Margin="10, 10, 10, 20">Price history (last 30 days)</TextBlock>
+            <DataGrid Grid.Row="1"
+                      ItemsSource="{Binding PriceHistory}"
+                      VerticalScrollBarVisibility="Visible"></DataGrid>
+        </Grid>
     </Grid>
 </UserControl>

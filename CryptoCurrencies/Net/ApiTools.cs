@@ -95,15 +95,6 @@ public static class ApiTools
         EnsureDeserialization(response);
         return response!.Data;
     }
-    
-    public static IEnumerable<Candle> GetCandles(string currencyId, string exchangeId, string baseID, string quoteId, string interval = "d1")
-    {
-        var url = $"{_baseUrl}/assets/{currencyId}/candles?interval={interval}&exchangeId={exchangeId}&baseId={baseID}&quoteId={quoteId}";
-        var json = GetResponse(url);
-        var response = JsonSerializer.Deserialize<ApiResponse<IEnumerable<Candle>>>(json);
-        EnsureDeserialization(response);
-        return response!.Data;
-    }
 
     private static void EnsureDeserialization<T>(ApiResponse<T>? response)
     {

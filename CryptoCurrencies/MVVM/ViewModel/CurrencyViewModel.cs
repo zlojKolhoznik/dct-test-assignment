@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Globalization;
+using System.Windows;
 using CryptoCurrencies.Core;
 using CryptoCurrencies.Models;
 using CryptoCurrencies.Net;
@@ -9,6 +10,7 @@ public class CurrencyViewModel : ObservableObject
 {
     private Currency? _currency;
     private List<Market>? _markets;
+    private List<PriceHistoryPoint>? _priceHistory;
 
     public CurrencyViewModel()
     {
@@ -17,6 +19,10 @@ public class CurrencyViewModel : ObservableObject
         if (Currency is not null)
         {
             Markets = ApiTools.GetMarkets(Currency.Id).Take(5).ToList();
+            PriceHistory = ApiTools.GetPriceHistory(Currency.Id)
+                .OrderByDescending(p => p.Time)
+                .Take(30)
+                .Select(p => new PriceHistoryPoint(p.PriceUsdDouble.ToString(CultureInfo.InvariantCulture), DateTime.Parse(p.Date).ToShortDateString())).ToList();
         }
     }
 
@@ -24,6 +30,16 @@ public class CurrencyViewModel : ObservableObject
     {
         Currency = e.Currency;
         Markets = ApiTools.GetMarkets(Currency.Id).Take(5).ToList();
+    }
+    
+    public List<PriceHistoryPoint>? PriceHistory
+    {
+        get => _priceHistory;
+        set
+        {
+            _priceHistory = value;
+            OnPropertyChanged();
+        }
     }
 
     public Currency? Currency
@@ -46,3 +62,4 @@ public class CurrencyViewModel : ObservableObject
         }
     }
 }
+public record PriceHistoryPoint(string Price, string Date);
