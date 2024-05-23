@@ -22,7 +22,7 @@ public static class ApiTools
         var json = GetResponse(url);
         var response = JsonSerializer.Deserialize<ApiResponse<IEnumerable<Currency>>>(json);
         EnsureDeserialization(response);
-        return response!.Data.Take(10);
+        return response!.Data.OrderBy(c => int.Parse(c.Rank)).Take(10);
     }
     
     /// <summary>
