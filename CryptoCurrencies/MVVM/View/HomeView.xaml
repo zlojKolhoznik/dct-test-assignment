@@ -1,0 +1,522 @@
+﻿<UserControl x:Class="CryptoCurrencies.MVVM.View.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:CryptoCurrencies.MVVM.View"
+             xmlns:vm="clr-namespace:CryptoCurrencies.MVVM.ViewModel"
+             mc:Ignorable="d"
+             d:DesignHeight="580" 
+             d:DesignWidth="700"
+             Background="Transparent">
+    
+    <UserControl.DataContext>
+        <vm:HomeViewModel></vm:HomeViewModel>
+    </UserControl.DataContext>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <TextBlock FontSize="22"
+                   Foreground="White"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,30">TOP 10 currencies</TextBlock>
+        
+        <WrapPanel Grid.Row="1"
+                   Margin="10">
+            <Border CornerRadius="10"
+                    Width="120"
+                    Height="150"
+                    Margin="5"
+                    Padding="5">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0"
+                                         EndPoint="1,1">
+                        <GradientStop Color="#FFF400" Offset="0.0"></GradientStop>
+                        <GradientStop Color="#FFE802" Offset="0.25"></GradientStop>
+                        <GradientStop Color="#FFCE00" Offset="0.5"></GradientStop>
+                        <GradientStop Color="#FDBD00" Offset="0.75"></GradientStop>
+                        <GradientStop Color="#FFB400" Offset="1.0"></GradientStop>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Border.InputBindings>
+                    <MouseBinding MouseAction="LeftClick" 
+                                  Command="{Binding CurrencySelectedCommand}"
+                                  CommandParameter="{Binding Currencies[0]}"></MouseBinding>
+                </Border.InputBindings>
+                <StackPanel>
+                    <TextBlock FontSize="18"
+                               Foreground="#333333"
+                               Text="{Binding Currencies[0].Name}"></TextBlock>
+                    <TextBlock FontSize="12"
+                               Foreground="#333333"
+                               Margin="0,0,0,15"
+                               Text="{Binding Currencies[0].Symbol}"></TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="14"
+                                   Foreground="#333333"
+                                   FontWeight="Bold">Price: $</TextBlock>
+                        <TextBlock FontSize="14"
+                                   Foreground="#333333"
+                                   FontWeight="Bold"
+                                   Text="{Binding Currencies[0].PriceUsdDouble}"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,0,0,30">
+                        <TextBlock FontSize="12"
+                                   Foreground="#333333">Rank: </TextBlock>
+                        <TextBlock FontSize="12"
+                                   Foreground="#333333"
+                                   Text="{Binding Currencies[0].Rank}"></TextBlock>
+                    </StackPanel>
+                    <TextBlock FontSize="12"
+                               Foreground="#333333">Click to view</TextBlock>
+                </StackPanel>
+            </Border>
+            <Border CornerRadius="10"
+                    Width="120"
+                    Height="150"
+                    Margin="5"
+                    Padding="5">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0"
+                                         EndPoint="1,1">
+                        <GradientStop Color="#DBE4EE" Offset="0.0"></GradientStop>
+                        <GradientStop Color="#CAD6DF" Offset="0.25"></GradientStop>
+                        <GradientStop Color="#B3C1C9" Offset="0.5"></GradientStop>
+                        <GradientStop Color="#A5B2BA" Offset="0.75"></GradientStop>
+                        <GradientStop Color="#8A959B" Offset="1.0"></GradientStop>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Border.InputBindings>
+                    <MouseBinding MouseAction="LeftClick" 
+                                  Command="{Binding CurrencySelectedCommand}"
+                                  CommandParameter="{Binding Currencies[1]}"></MouseBinding>
+                </Border.InputBindings>
+                <StackPanel>
+                    <TextBlock FontSize="18"
+                               Foreground="#333333"
+                               Text="{Binding Currencies[1].Name}"></TextBlock>
+                    <TextBlock FontSize="12"
+                               Foreground="#333333"
+                               Margin="0,0,0,15"
+                               Text="{Binding Currencies[1].Symbol}"></TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="14"
+                                   Foreground="#333333"
+                                   FontWeight="Bold">Price: $</TextBlock>
+                        <TextBlock FontSize="14"
+                                   Foreground="#333333"
+                                   FontWeight="Bold"
+                                   Text="{Binding Currencies[1].PriceUsdDouble}"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,0,0,30">
+                        <TextBlock FontSize="12"
+                                   Foreground="#333333">Rank: </TextBlock>
+                        <TextBlock FontSize="12"
+                                   Foreground="#333333"
+                                   Text="{Binding Currencies[1].Rank}"></TextBlock>
+                    </StackPanel>
+                    <TextBlock FontSize="12"
+                               Foreground="#333333">Click to view</TextBlock>
+                </StackPanel>
+            </Border>
+            <Border CornerRadius="10"
+                    Width="120"
+                    Height="150"
+                    Margin="5"
+                    Padding="5">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0"
+                                         EndPoint="1,1">
+                        <GradientStop Color="#FB7200" Offset="0.0"></GradientStop>
+                        <GradientStop Color="#E36700" Offset="0.25"></GradientStop>
+                        <GradientStop Color="#D66100" Offset="0.5"></GradientStop>
+                        <GradientStop Color="#C75A00" Offset="0.75"></GradientStop>
+                        <GradientStop Color="#B65200" Offset="1.0"></GradientStop>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Border.InputBindings>
+                    <MouseBinding MouseAction="LeftClick" 
+                                  Command="{Binding CurrencySelectedCommand}"
+                                  CommandParameter="{Binding Currencies[2]}"></MouseBinding>
+                </Border.InputBindings>
+                <StackPanel>
+                    <TextBlock FontSize="18"
+                               Foreground="#333333"
+                               Text="{Binding Currencies[2].Name}"></TextBlock>
+                    <TextBlock FontSize="12"
+                               Foreground="#333333"
+                               Margin="0,0,0,15"
+                               Text="{Binding Currencies[2].Symbol}"></TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="14"
+                                   Foreground="#333333"
+                                   FontWeight="Bold">Price: $</TextBlock>
+                        <TextBlock FontSize="14"
+                                   Foreground="#333333"
+                                   FontWeight="Bold"
+                                   Text="{Binding Currencies[2].PriceUsdDouble}"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,0,0,30">
+                        <TextBlock FontSize="12"
+                                   Foreground="#333333">Rank: </TextBlock>
+                        <TextBlock FontSize="12"
+                                   Foreground="#333333"
+                                   Text="{Binding Currencies[2].Rank}"></TextBlock>
+                    </StackPanel>
+                    <TextBlock FontSize="12"
+                               Foreground="#333333">Click to view</TextBlock>
+                </StackPanel>
+            </Border>
+            <Border CornerRadius="10"
+                    Width="120"
+                    Height="150"
+                    Margin="5"
+                    Padding="5">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0"
+                                         EndPoint="1,1">
+                        <GradientStop Color="#B3DDEA" Offset="0.0"></GradientStop>
+                        <GradientStop Color="#9AC2CE" Offset="0.25"></GradientStop>
+                        <GradientStop Color="#69868E" Offset="0.5"></GradientStop>
+                        <GradientStop Color="#56727B" Offset="0.75"></GradientStop>
+                        <GradientStop Color="#304146" Offset="1.0"></GradientStop>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Border.InputBindings>
+                    <MouseBinding MouseAction="LeftClick" 
+                                  Command="{Binding CurrencySelectedCommand}"
+                                  CommandParameter="{Binding Currencies[3]}"></MouseBinding>
+                </Border.InputBindings>
+                <StackPanel>
+                    <TextBlock FontSize="18"
+                               Foreground="#333333"
+                               Text="{Binding Currencies[3].Name}"></TextBlock>
+                    <TextBlock FontSize="12"
+                               Foreground="#333333"
+                               Margin="0,0,0,15"
+                               Text="{Binding Currencies[3].Symbol}"></TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="14"
+                                   Foreground="#333333"
+                                   FontWeight="Bold">Price: $</TextBlock>
+                        <TextBlock FontSize="14"
+                                   Foreground="#333333"
+                                   FontWeight="Bold"
+                                   Text="{Binding Currencies[3].PriceUsdDouble}"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,0,0,30">
+                        <TextBlock FontSize="12"
+                                   Foreground="#333333">Rank: </TextBlock>
+                        <TextBlock FontSize="12"
+                                   Foreground="#333333"
+                                   Text="{Binding Currencies[3].Rank}"></TextBlock>
+                    </StackPanel>
+                    <TextBlock FontSize="12"
+                               Foreground="#333333">Click to view</TextBlock>
+                </StackPanel>
+            </Border>
+            <Border CornerRadius="10"
+                    Width="120"
+                    Height="150"
+                    Margin="5"
+                    Padding="5">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0"
+                                         EndPoint="1,1">
+                        <GradientStop Color="#B3DDEA" Offset="0.0"></GradientStop>
+                        <GradientStop Color="#9AC2CE" Offset="0.25"></GradientStop>
+                        <GradientStop Color="#69868E" Offset="0.5"></GradientStop>
+                        <GradientStop Color="#56727B" Offset="0.75"></GradientStop>
+                        <GradientStop Color="#304146" Offset="1.0"></GradientStop>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Border.InputBindings>
+                    <MouseBinding MouseAction="LeftClick" 
+                                  Command="{Binding CurrencySelectedCommand}"
+                                  CommandParameter="{Binding Currencies[4]}"></MouseBinding>
+                </Border.InputBindings>
+                <StackPanel>
+                    <TextBlock FontSize="18"
+                               Foreground="#333333"
+                               Text="{Binding Currencies[4].Name}"></TextBlock>
+                    <TextBlock FontSize="12"
+                               Foreground="#333333"
+                               Margin="0,0,0,15"
+                               Text="{Binding Currencies[4].Symbol}"></TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="14"
+                                   Foreground="#333333"
+                                   FontWeight="Bold">Price: $</TextBlock>
+                        <TextBlock FontSize="14"
+                                   Foreground="#333333"
+                                   FontWeight="Bold"
+                                   Text="{Binding Currencies[4].PriceUsdDouble}"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,0,0,30">
+                        <TextBlock FontSize="12"
+                                   Foreground="#333333">Rank: </TextBlock>
+                        <TextBlock FontSize="12"
+                                   Foreground="#333333"
+                                   Text="{Binding Currencies[4].Rank}"></TextBlock>
+                    </StackPanel>
+                    <TextBlock FontSize="12"
+                               Foreground="#333333">Click to view</TextBlock>
+                </StackPanel>
+            </Border>
+            <Border CornerRadius="10"
+                    Width="120"
+                    Height="150"
+                    Margin="5"
+                    Padding="5">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0"
+                                         EndPoint="1,1">
+                        <GradientStop Color="#B3DDEA" Offset="0.0"></GradientStop>
+                        <GradientStop Color="#9AC2CE" Offset="0.25"></GradientStop>
+                        <GradientStop Color="#69868E" Offset="0.5"></GradientStop>
+                        <GradientStop Color="#56727B" Offset="0.75"></GradientStop>
+                        <GradientStop Color="#304146" Offset="1.0"></GradientStop>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Border.InputBindings>
+                    <MouseBinding MouseAction="LeftClick" 
+                                  Command="{Binding CurrencySelectedCommand}"
+                                  CommandParameter="{Binding Currencies[5]}"></MouseBinding>
+                </Border.InputBindings>
+                <StackPanel>
+                    <TextBlock FontSize="18"
+                               Foreground="#333333"
+                               Text="{Binding Currencies[5].Name}"></TextBlock>
+                    <TextBlock FontSize="12"
+                               Foreground="#333333"
+                               Margin="0,0,0,15"
+                               Text="{Binding Currencies[5].Symbol}"></TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="14"
+                                   Foreground="#333333"
+                                   FontWeight="Bold">Price: $</TextBlock>
+                        <TextBlock FontSize="14"
+                                   Foreground="#333333"
+                                   FontWeight="Bold"
+                                   Text="{Binding Currencies[5].PriceUsdDouble}"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,0,0,30">
+                        <TextBlock FontSize="12"
+                                   Foreground="#333333">Rank: </TextBlock>
+                        <TextBlock FontSize="12"
+                                   Foreground="#333333"
+                                   Text="{Binding Currencies[5].Rank}"></TextBlock>
+                    </StackPanel>
+                    <TextBlock FontSize="12"
+                               Foreground="#333333">Click to view</TextBlock>
+                </StackPanel>
+            </Border>
+            <Border CornerRadius="10"
+                    Width="120"
+                    Height="150"
+                    Margin="5"
+                    Padding="5">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0"
+                                         EndPoint="1,1">
+                        <GradientStop Color="#B3DDEA" Offset="0.0"></GradientStop>
+                        <GradientStop Color="#9AC2CE" Offset="0.25"></GradientStop>
+                        <GradientStop Color="#69868E" Offset="0.5"></GradientStop>
+                        <GradientStop Color="#56727B" Offset="0.75"></GradientStop>
+                        <GradientStop Color="#304146" Offset="1.0"></GradientStop>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Border.InputBindings>
+                    <MouseBinding MouseAction="LeftClick" 
+                                  Command="{Binding CurrencySelectedCommand}"
+                                  CommandParameter="{Binding Currencies[6]}"></MouseBinding>
+                </Border.InputBindings>
+                <StackPanel>
+                    <TextBlock FontSize="18"
+                               Foreground="#333333"
+                               Text="{Binding Currencies[6].Name}"></TextBlock>
+                    <TextBlock FontSize="12"
+                               Foreground="#333333"
+                               Margin="0,0,0,15"
+                               Text="{Binding Currencies[6].Symbol}"></TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="14"
+                                   Foreground="#333333"
+                                   FontWeight="Bold">Price: $</TextBlock>
+                        <TextBlock FontSize="14"
+                                   Foreground="#333333"
+                                   FontWeight="Bold"
+                                   Text="{Binding Currencies[6].PriceUsdDouble}"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,0,0,30">
+                        <TextBlock FontSize="12"
+                                   Foreground="#333333">Rank: </TextBlock>
+                        <TextBlock FontSize="12"
+                                   Foreground="#333333"
+                                   Text="{Binding Currencies[6].Rank}"></TextBlock>
+                    </StackPanel>
+                    <TextBlock FontSize="12"
+                               Foreground="#333333">Click to view</TextBlock>
+                </StackPanel>
+            </Border>
+            <Border CornerRadius="10"
+                    Width="120"
+                    Height="150"
+                    Margin="5"
+                    Padding="5">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0"
+                                         EndPoint="1,1">
+                        <GradientStop Color="#B3DDEA" Offset="0.0"></GradientStop>
+                        <GradientStop Color="#9AC2CE" Offset="0.25"></GradientStop>
+                        <GradientStop Color="#69868E" Offset="0.5"></GradientStop>
+                        <GradientStop Color="#56727B" Offset="0.75"></GradientStop>
+                        <GradientStop Color="#304146" Offset="1.0"></GradientStop>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Border.InputBindings>
+                    <MouseBinding MouseAction="LeftClick" 
+                                  Command="{Binding CurrencySelectedCommand}"
+                                  CommandParameter="{Binding Currencies[7]}"></MouseBinding>
+                </Border.InputBindings>
+                <StackPanel>
+                    <TextBlock FontSize="18"
+                               Foreground="#333333"
+                               Text="{Binding Currencies[7].Name}"></TextBlock>
+                    <TextBlock FontSize="12"
+                               Foreground="#333333"
+                               Margin="0,0,0,15"
+                               Text="{Binding Currencies[7].Symbol}"></TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="14"
+                                   Foreground="#333333"
+                                   FontWeight="Bold">Price: $</TextBlock>
+                        <TextBlock FontSize="14"
+                                   Foreground="#333333"
+                                   FontWeight="Bold"
+                                   Text="{Binding Currencies[7].PriceUsdDouble}"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,0,0,30">
+                        <TextBlock FontSize="12"
+                                   Foreground="#333333">Rank: </TextBlock>
+                        <TextBlock FontSize="12"
+                                   Foreground="#333333"
+                                   Text="{Binding Currencies[7].Rank}"></TextBlock>
+                    </StackPanel>
+                    <TextBlock FontSize="12"
+                               Foreground="#333333">Click to view</TextBlock>
+                </StackPanel>
+            </Border>
+            <Border CornerRadius="10"
+                    Width="120"
+                    Height="150"
+                    Margin="5"
+                    Padding="5">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0"
+                                         EndPoint="1,1">
+                        <GradientStop Color="#B3DDEA" Offset="0.0"></GradientStop>
+                        <GradientStop Color="#9AC2CE" Offset="0.25"></GradientStop>
+                        <GradientStop Color="#69868E" Offset="0.5"></GradientStop>
+                        <GradientStop Color="#56727B" Offset="0.75"></GradientStop>
+                        <GradientStop Color="#304146" Offset="1.0"></GradientStop>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Border.InputBindings>
+                    <MouseBinding MouseAction="LeftClick" 
+                                  Command="{Binding CurrencySelectedCommand}"
+                                  CommandParameter="{Binding Currencies[8]}"></MouseBinding>
+                </Border.InputBindings>
+                <StackPanel>
+                    <TextBlock FontSize="18"
+                               Foreground="#333333"
+                               Text="{Binding Currencies[8].Name}"></TextBlock>
+                    <TextBlock FontSize="12"
+                               Foreground="#333333"
+                               Margin="0,0,0,15"
+                               Text="{Binding Currencies[8].Symbol}"></TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="14"
+                                   Foreground="#333333"
+                                   FontWeight="Bold">Price: $</TextBlock>
+                        <TextBlock FontSize="14"
+                                   Foreground="#333333"
+                                   FontWeight="Bold"
+                                   Text="{Binding Currencies[8].PriceUsdDouble}"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,0,0,30">
+                        <TextBlock FontSize="12"
+                                   Foreground="#333333">Rank: </TextBlock>
+                        <TextBlock FontSize="12"
+                                   Foreground="#333333"
+                                   Text="{Binding Currencies[8].Rank}"></TextBlock>
+                    </StackPanel>
+                    <TextBlock FontSize="12"
+                               Foreground="#333333">Click to view</TextBlock>
+                </StackPanel>
+            </Border>
+            <Border CornerRadius="10"
+                    Width="120"
+                    Height="150"
+                    Margin="5"
+                    Padding="5">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0"
+                                         EndPoint="1,1">
+                        <GradientStop Color="#B3DDEA" Offset="0.0"></GradientStop>
+                        <GradientStop Color="#9AC2CE" Offset="0.25"></GradientStop>
+                        <GradientStop Color="#69868E" Offset="0.5"></GradientStop>
+                        <GradientStop Color="#56727B" Offset="0.75"></GradientStop>
+                        <GradientStop Color="#304146" Offset="1.0"></GradientStop>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Border.InputBindings>
+                    <MouseBinding MouseAction="LeftClick" 
+                                  Command="{Binding CurrencySelectedCommand}"
+                                  CommandParameter="{Binding Currencies[9]}"></MouseBinding>
+                </Border.InputBindings>
+                <StackPanel>
+                    <TextBlock FontSize="18"
+                               Foreground="#333333"
+                               Text="{Binding Currencies[9].Name}"></TextBlock>
+                    <TextBlock FontSize="12"
+                               Foreground="#333333"
+                               Margin="0,0,0,15"
+                               Text="{Binding Currencies[9].Symbol}"></TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="14"
+                                   Foreground="#333333"
+                                   FontWeight="Bold">Price: $</TextBlock>
+                        <TextBlock FontSize="14"
+                                   Foreground="#333333"
+                                   FontWeight="Bold"
+                                   Text="{Binding Currencies[9].PriceUsdDouble}"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,0,0,30">
+                        <TextBlock FontSize="12"
+                                   Foreground="#333333">Rank: </TextBlock>
+                        <TextBlock FontSize="12"
+                                   Foreground="#333333"
+                                   Text="{Binding Currencies[9].Rank}"></TextBlock>
+                    </StackPanel>
+                    <TextBlock FontSize="12"
+                               Foreground="#333333">Click to view</TextBlock>
+                </StackPanel>
+            </Border>
+        </WrapPanel>
+    </Grid>
+</UserControl>

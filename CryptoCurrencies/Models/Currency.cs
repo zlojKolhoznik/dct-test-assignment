@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Globalization;
+using System.Text.Json.Serialization;
 
 namespace CryptoCurrencies.Models;
 
@@ -41,4 +42,6 @@ public class Currency
     {
         return amount * double.Parse(PriceUsd) / double.Parse(other.PriceUsd);
     }
+
+    public double PriceUsdDouble => (double)Math.Round(decimal.Parse(PriceUsd, CultureInfo.InvariantCulture), 2);
 }

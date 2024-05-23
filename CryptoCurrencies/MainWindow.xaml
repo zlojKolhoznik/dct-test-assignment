@@ -41,17 +41,21 @@
                              Height="50"
                              Foreground="White"
                              FontSize="16"
-                             Style="{StaticResource MenuButtonStyle}"></RadioButton>
+                             Style="{StaticResource MenuButtonStyle}"
+                             Command="{Binding HomeViewCommand}"
+                             IsChecked="True"></RadioButton>
                 <RadioButton Content="Currency"
                              Height="50"
                              Foreground="White"
                              FontSize="16"
-                             Style="{StaticResource MenuButtonStyle}"></RadioButton>
+                             Style="{StaticResource MenuButtonStyle}"
+                             Command="{Binding CurrencyViewCommand}"></RadioButton>
                 <RadioButton Content="Convert"
                              Height="50"
                              Foreground="White"
                              FontSize="16"
-                             Style="{StaticResource MenuButtonStyle}"></RadioButton>
+                             Style="{StaticResource MenuButtonStyle}"
+                             Command="{Binding ConverterViewCommand}"></RadioButton>
                 <RadioButton Content="Exit"
                              Height="50"
                              Foreground="White"
@@ -70,6 +74,11 @@
                         Padding="5"
                         Style="{StaticResource SearchButtonStyle}"></Button>
             </StackPanel>
+            
+            <ContentControl Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="10"
+                            Content="{Binding CurrentViewModel}"></ContentControl>
         </Grid>
     </Border>
 </Window>
