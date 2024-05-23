@@ -14,6 +14,7 @@ public class MainViewModel : ObservableObject
     {
         HomeViewModel = new HomeViewModel();
         CurrencyViewModel = new CurrencyViewModel();
+        ConverterViewModel = new ConverterViewModel();
         HomeViewModel.CurrencySelected += OnCurrencySelected;
         CurrentViewModel = HomeViewModel;
     }
@@ -39,6 +40,8 @@ public class MainViewModel : ObservableObject
     public HomeViewModel HomeViewModel { get; set; }
 
     public CurrencyViewModel CurrencyViewModel { get; set; }
+    
+    public ConverterViewModel ConverterViewModel { get; set; }
 
     public RelayCommand ExitCommand => new RelayCommand(_ => Application.Current.Shutdown());
 
@@ -46,7 +49,7 @@ public class MainViewModel : ObservableObject
 
     public RelayCommand CurrencyViewCommand => new RelayCommand(_ => CurrentViewModel = CurrencyViewModel, _ => SelectedCurrency is not null);
 
-    public RelayCommand ConverterViewCommand => new RelayCommand(_ => CurrentViewModel = "ConverterViewModel", _ => SelectedCurrency is not null);
+    public RelayCommand ConverterViewCommand => new RelayCommand(_ => CurrentViewModel = ConverterViewModel);
     
     public RelayCommand SearchCommand => new RelayCommand(async param =>
     {

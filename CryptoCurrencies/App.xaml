@@ -11,6 +11,7 @@
                  <ResourceDictionary Source="Themes/MenuButtonTheme.xaml"></ResourceDictionary>
                  <ResourceDictionary Source="Themes/SearchBoxTheme.xaml"></ResourceDictionary>
                  <ResourceDictionary Source="Themes/SearchButtonStyle.xaml"></ResourceDictionary>
+                 <ResourceDictionary Source="Themes/ConverterTextBoxTheme.xaml"></ResourceDictionary>
              </ResourceDictionary.MergedDictionaries>
              
              <DataTemplate DataType="{x:Type vm:HomeViewModel}">
@@ -22,6 +23,9 @@
              <DataTemplate DataType="{x:Type vm:LoadingViewModel}">
                  <view:LoadingView/>
              </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:ConverterViewModel}">
+                <view:ConverterView/>
+            </DataTemplate>
          </ResourceDictionary>
     </Application.Resources>
 </Application>

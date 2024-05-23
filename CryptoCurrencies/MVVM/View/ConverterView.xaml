@@ -1,0 +1,143 @@
+﻿<UserControl x:Class="CryptoCurrencies.MVVM.View.ConverterView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:viewModel="clr-namespace:CryptoCurrencies.MVVM.ViewModel"
+             xmlns:local="clr-namespace:CryptoCurrencies.MVVM.View"
+             mc:Ignorable="d"
+             d:DesignHeight="580"
+             d:DesignWidth="780"
+             Background="Transparent">
+    
+    <UserControl.DataContext>
+        <viewModel:ConverterViewModel></viewModel:ConverterViewModel>
+    </UserControl.DataContext>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock FontSize="18"
+                   Foreground="White"
+                   Grid.ColumnSpan="4"
+                   HorizontalAlignment="Center"
+                   FontWeight="Bold"
+                   Margin="20,20,20,150">Convert currencies</TextBlock>
+        <TextBlock FontSize="14"
+                   Foreground="White"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   Margin="0,7,20,0"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Top">From:</TextBlock>
+        <TextBox Grid.Row="1"
+                 Grid.Column="1"
+                 Height="40"
+                 Tag="Code of currency you want to convert from"
+                 VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                 x:Name="FromInput"
+                 Style="{StaticResource ConverterTextBoxTheme}"></TextBox>
+        <TextBlock FontSize="14"
+                   Foreground="White"
+                   Grid.Row="1"
+                   Grid.Column="2"
+                   Margin="0,7,20,0"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Top">To:</TextBlock>
+        <TextBox Grid.Row="1"
+                 Grid.Column="3"
+                 Height="40"
+                 Tag="Code of currency you want to convert to"
+                 x:Name="ToInput"
+                 VerticalAlignment="Top"
+                 HorizontalAlignment="Left"
+                 Style="{StaticResource ConverterTextBoxTheme}"></TextBox>
+        <Button Grid.Row="2"
+                Grid.Column="0"
+                Click="ConvertCurrencies"
+                Height="40"
+                Width="80"
+                HorizontalAlignment="Right">
+            <Button.Template>
+                <ControlTemplate>
+                    <Border CornerRadius="10"
+                            Height="40"
+                            Width="80"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Right"
+                            Background="#E8E5DF">
+            <TextBlock Text="Convert!"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Padding="5"
+                       Foreground="#353535"></TextBlock>
+            <Border.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                            To="#DCDCDC"
+                                            Duration="0:0:0.2"></ColorAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                            To="#E8E5DF"
+                                            Duration="0:0:0.2"></ColorAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                            To="#CDCDCD"
+                                            Duration="0:0:0.2"></ColorAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Border.Triggers>
+        </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Border Grid.Row="2"
+                Grid.Column="1"
+                Height="40"
+                Width="50"
+                HorizontalAlignment="Right"
+                CornerRadius="10"
+                Background="#EAEAEA">
+            <TextBox Height="40"
+                     Text="0"
+                     Background="Transparent"
+                     BorderThickness="0"
+                     VerticalContentAlignment="Center"
+                     VerticalAlignment="Center"
+                     x:Name="QuantityInput"
+                     FontSize="18"></TextBox>
+        </Border>
+        <TextBlock Grid.Row="2"
+                   Grid.Column="2"
+                   Grid.ColumnSpan="2"
+                   FontSize="18"
+                   Foreground="White"
+                   Margin="15,7,20,0"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   x:Name="ResultText"></TextBlock>
+    </Grid>
+</UserControl>

@@ -40,7 +40,7 @@ public class Currency
     
     public double Convert(Currency other, double amount)
     {
-        return amount * double.Parse(PriceUsd) / double.Parse(other.PriceUsd);
+        return amount * PriceUsdDouble / other.PriceUsdDouble;
     }
 
     public double PriceUsdDouble => (double)Math.Round(decimal.Parse(PriceUsd, CultureInfo.InvariantCulture), 2);
