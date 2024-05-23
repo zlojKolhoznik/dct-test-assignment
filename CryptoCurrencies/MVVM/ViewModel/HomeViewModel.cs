@@ -9,7 +9,7 @@ namespace CryptoCurrencies.MVVM.ViewModel;
 
 public class HomeViewModel : ObservableObject
 {
-    public static event EventHandler<CurrencySelectedEventArgs>? CurrencySelected; // Marked as static because it does not work on instances of the class for some reason
+    public static event EventHandler<CurrencyEventArgs>? CurrencySelected; // Marked as static because it does not work on instances of the class for some reason
     
     private List<Currency> _currencies;
     
@@ -34,6 +34,6 @@ public class HomeViewModel : ObservableObject
         {
             throw new ArgumentException("The parameter must be a Currency object.", nameof(param));
         }
-        CurrencySelected?.Invoke(this, new CurrencySelectedEventArgs(currency));
+        CurrencySelected?.Invoke(this, new CurrencyEventArgs(currency));
     });
 }

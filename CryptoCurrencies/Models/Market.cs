@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Globalization;
+using System.Text.Json.Serialization;
 
 namespace CryptoCurrencies.Models;
 
@@ -27,4 +28,6 @@ public class Market
     
     [JsonPropertyName("volumePercent")]
     public string VolumePercent { get; set; }
+    
+    public double PriceUsdDouble => (double)Math.Round(decimal.Parse(PriceUsd, CultureInfo.InvariantCulture), 2);
 }

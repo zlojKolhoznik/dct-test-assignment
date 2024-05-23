@@ -14,7 +14,13 @@
              </ResourceDictionary.MergedDictionaries>
              
              <DataTemplate DataType="{x:Type vm:HomeViewModel}">
-                 <view:HomeView />
+                 <view:HomeView/>
+             </DataTemplate>
+             <DataTemplate DataType="{x:Type vm:CurrencyViewModel}">
+                 <view:CurrencyView/>
+             </DataTemplate>
+             <DataTemplate DataType="{x:Type vm:LoadingViewModel}">
+                 <view:LoadingView/>
              </DataTemplate>
          </ResourceDictionary>
     </Application.Resources>

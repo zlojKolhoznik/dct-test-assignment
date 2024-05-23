@@ -50,7 +50,7 @@ public static class ApiTools
         var json = GetResponse(url);
         var response = JsonSerializer.Deserialize<ApiResponse<IEnumerable<Currency>>>(json);
         EnsureDeserialization(response);
-        return response!.Data.FirstOrDefault(c => c.Symbol == symbol);
+        return response!.Data.FirstOrDefault(c => string.Equals(c.Symbol, symbol, StringComparison.CurrentCultureIgnoreCase));
     }
     
     /// <summary>
@@ -64,7 +64,7 @@ public static class ApiTools
         var json = GetResponse(url);
         var response = JsonSerializer.Deserialize<ApiResponse<IEnumerable<Currency>>>(json);
         EnsureDeserialization(response);
-        return response!.Data.FirstOrDefault(c => c.Name.Contains(name, StringComparison.CurrentCultureIgnoreCase));
+        return response!.Data.FirstOrDefault(c => string.Equals(c.Name, name, StringComparison.CurrentCultureIgnoreCase));
     }
 
     /// <summary>

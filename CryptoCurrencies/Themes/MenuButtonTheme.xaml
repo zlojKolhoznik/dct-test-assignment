@@ -22,9 +22,6 @@
             <Setter Property="BorderThickness" Value="0"></Setter>
         </Style.Setters>
         <Style.Triggers>
-            <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="#322053"></Setter>
-            </Trigger>
             <EventTrigger RoutedEvent="MouseEnter">
                 <BeginStoryboard>
                     <Storyboard>

@@ -2,9 +2,9 @@
 
 namespace CryptoCurrencies.Core;
 
-public class CurrencySelectedEventArgs : EventArgs
+public class CurrencyEventArgs : EventArgs
 {
-    public CurrencySelectedEventArgs(Currency currency)
+    public CurrencyEventArgs(Currency currency)
     {
         Currency = currency;
     }

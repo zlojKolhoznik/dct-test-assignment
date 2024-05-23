@@ -44,4 +44,7 @@ public class Currency
     }
 
     public double PriceUsdDouble => (double)Math.Round(decimal.Parse(PriceUsd, CultureInfo.InvariantCulture), 2);
+    public double VolumeUsd24HrDouble => (double)Math.Round(decimal.Parse(VolumeUsd24Hr, CultureInfo.InvariantCulture), 2);
+    public double SupplyDouble => (double)Math.Round(decimal.Parse(Supply, CultureInfo.InvariantCulture), 2);
+    public double MarketCapUsdDouble => (double)Math.Round(decimal.Parse(MarketCapUsd, CultureInfo.InvariantCulture), 2);
 }

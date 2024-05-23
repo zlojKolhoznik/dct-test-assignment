@@ -12,4 +12,15 @@
       <Folder Include="MVVM\Model\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="Images\loading.gif" />
+      <Resource Include="Images\loading.gif">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
+    </ItemGroup>
+
 </Project>
